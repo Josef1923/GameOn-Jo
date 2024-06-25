@@ -12,8 +12,12 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
+const close = document.querySelector(".close"); // Element (X) Josef
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
+
 
 // launch modal form
 function launchModal() {
@@ -21,3 +25,10 @@ function launchModal() {
 }
 
 
+//close modal event Josef
+close.addEventListener("click", closeModal);
+
+//close modal form Josef
+function closeModal() {
+  modalbg.style.display = "none";
+}
