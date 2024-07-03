@@ -12,7 +12,15 @@ const modalbg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
 const formData = document.querySelectorAll(".formData");
 
-const close = document.querySelector(".close"); // Element (X) Josef
+// DOM Rajoutés projet
+const close = document.querySelector(".close"); // Element (X) 
+const ForeName = document.getElementById("first"); // Element prénom
+const LastName = document.getElementById("last"); // Element nom
+const email = document.getElementById("email"); // Element mail
+const BirthDate = document.getElementById("birthdate"); // Element birth
+const quantity = document.getElementById("quantity"); // Elemnt quantité
+
+const form = document.querySelector('form'); // Element form
 
 
 // launch modal event
@@ -34,3 +42,8 @@ function closeModal() {
 }
 
 
+//Empechement comportement par défaut "submit"
+
+form.addEventListener("submit", (event) => {
+  event.preventDefault();;
+});
