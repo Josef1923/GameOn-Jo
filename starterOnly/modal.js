@@ -102,10 +102,16 @@ form.addEventListener("submit", (event) => {
   
     let ForeNamedivElement = ForeName.parentElement.querySelector('div');
     ForeNamedivElement.textContent = "";
+    ForeNamedivElement.style.fontSize = "";
+    ForeNamedivElement.style.color = "";
     ForeName.style.border = "";
+
     if (ForeName.value.length < 2) {    
-      ForeNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom. "
+      ForeNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom. ";
+      ForeNamedivElement.style.fontSize = "0.5em"; 
+      ForeNamedivElement.style.color = "#e54858"; 
       ForeName.style.border = "2px solid red";
+      
       isValid = false;
     }
   
@@ -113,8 +119,14 @@ form.addEventListener("submit", (event) => {
   
     let LastNamedivElement = LastName.parentElement.querySelector('div');
     LastNamedivElement.textContent = "";
+    LastNamedivElement.style.fontSize = "";
+    LastNamedivElement.style.color = "";
+    LastName.style.border = "";
+
     if (LastName.value.length < 2) {    
       LastNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom. "
+      LastNamedivElement.style.fontSize = "0.5em"; 
+      LastNamedivElement.style.color = "#e54858"; 
       LastName.style.border = "2px solid red";
       isValid = false;
     }
@@ -123,9 +135,16 @@ form.addEventListener("submit", (event) => {
   
     let emaildivElement = email.parentElement.querySelector('div');
     emaildivElement.textContent = "";
+    emaildivElement.style.fontSize = "";
+    emaildivElement.style.color = "";
+    email.style.border = "";
+
     let emailRegExp = /[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]/;
+
     if (!emailRegExp.test(email.value)) {    
       emaildivElement.textContent = "Veuillez entrer une adresse mail valide. "
+      emaildivElement.style.fontSize = "0.5em"; 
+      emaildivElement.style.color = "#e54858"; 
       email.style.border = "2px solid red";
       isValid = false;
     }
@@ -134,10 +153,14 @@ form.addEventListener("submit", (event) => {
   
     let BirthDatedivElement = BirthDate.parentElement.querySelector('div');
     BirthDatedivElement.textContent = "";
-    
+    BirthDatedivElement.style.fontSize = "";
+    BirthDatedivElement.style.color = "";
+    BirthDate.style.border = "";
     if (!BirthDate.value) {    
       BirthDatedivElement.textContent = "Vous devez entrer votre date de naissance.";
-      console.log("nul a chier");
+      BirthDatedivElement.style.fontSize = "0.5em"; 
+      BirthDatedivElement.style.color = "#e54858";
+      BirthDate.style.border = "2px solid red";
       isValid = false;
     }
   
