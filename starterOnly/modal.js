@@ -164,6 +164,23 @@ form.addEventListener("submit", (event) => {
       isValid = false;
     }
   
+     //verification nombre de participation
+
+     let quantitydivElement = quantity.parentElement.querySelector('div');
+     quantitydivElement.textContent = "";
+     quantitydivElement.style.fontSize = "";
+     quantitydivElement.style.color = "";
+     quantity.style.border = "";
+     if (quantity.value < "1") {    
+      quantitydivElement.textContent = "Vous devez choisir un nombre.";
+      quantitydivElement.style.fontSize = "0.5em"; 
+      quantitydivElement.style.color = "#e54858";
+      quantity.style.border = "2px solid red";
+
+      
+       isValid = false;
+     }
+
   
     if (isValid) {
       console.log("Formulaire valide")
