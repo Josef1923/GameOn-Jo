@@ -19,7 +19,8 @@ function editNav() {
  const email = document.getElementById("email"); // Element mail
  const BirthDate = document.getElementById("birthdate"); // Element birth
  const quantity = document.getElementById("quantity"); // Elemnt quantité
- 
+ const ListRadio = document.querySelectorAll("input[type=radio]"); // Element radio
+
  const form = document.querySelector('form'); // Element form
  const error = document.querySelectorAll(".error_message"); // Element erreur
  
@@ -133,6 +134,13 @@ event.preventDefault();
     
       isValid = false;
     }
+
+     //verification lieu de participation
+
+     for (let = 0; i < ListRadio.length; i++) {
+      if (ListRadio[i].checked) {
+        console.log(ListRadio[i].value)
+      }  }
 
 
   if (isValid) {
