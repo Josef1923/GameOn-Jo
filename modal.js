@@ -136,11 +136,14 @@ event.preventDefault();
     }
 
      //verification lieu de participation
-
-     for (let = 0; i < ListRadio.length; i++) {
+     
+     let Location = "";
+     for (let i = 0; i < ListRadio.length; i++) {
       if (ListRadio[i].checked) {
-        console.log(ListRadio[i].value)
-      }  }
+        Location = ListRadio[i].value;
+        break;
+      } 
+     }
 
 
   if (isValid) {
