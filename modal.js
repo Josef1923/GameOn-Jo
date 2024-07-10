@@ -20,6 +20,8 @@ function editNav() {
  const BirthDate = document.getElementById("birthdate"); // Element birth
  const quantity = document.getElementById("quantity"); // Elemnt quantité
  const ListRadio = document.querySelectorAll("input[type=radio]"); // Element radio
+ const CheckAccept1 = document.getElementById("checkbox1"); // Element checkbox condition d'utilisation
+ const CheckAccept2 = document.getElementById("checkbox2"); // Element checkbox souhait d'informations
 
  const form = document.querySelector('form'); // Element form
  const error = document.querySelectorAll(".error_message"); // Element erreur
@@ -126,24 +128,51 @@ event.preventDefault();
     quantitydivElement.style.color = "";
     quantity.style.border = "";
     if (quantity.value < "1") {    
-    quantitydivElement.textContent = "Vous devez choisir un nombre.";
-    quantitydivElement.style.fontSize = "0.5em"; 
-    quantitydivElement.style.color = "#e54858";
-    quantity.style.border = "2px solid red";
-
-    
-      isValid = false;
+      quantitydivElement.textContent = "Vous devez choisir un nombre.";
+      quantitydivElement.style.fontSize = "0.5em"; 
+      quantitydivElement.style.color = "#e54858";
+      quantity.style.border = "2px solid red";
+  
+      
+        isValid = false;
     }
 
      //verification lieu de participation
      
-     let Location = "";
+     
      for (let i = 0; i < ListRadio.length; i++) {
       if (ListRadio[i].checked) {
         Location = ListRadio[i].value;
+        console.log(Location);
         break;
       } 
      }
+
+     //verification acceptation des conditions d'utilisation
+     let CheckAccept1divElement = CheckAccept1.parentElement.querySelector('div');
+     CheckAccept1divElement.textContent = "";
+     CheckAccept1divElement.style.fontSize = "";
+     CheckAccept1divElement.style.color = "";
+     
+     if (!checkbox1.checked) {
+      CheckAccept1divElement.textContent = "Vous devez accepter les conditions d'utilisation.";
+      CheckAccept1divElement.style.fontSize = "0.5em"; 
+      CheckAccept1divElement.style.color = "#e54858";
+      
+  
+      
+        isValid = false;
+
+     }
+
+     //verification souhait information des prochains évenements
+
+    let InfoWish = ""
+    if (CheckAccept2.checked) {
+      InfoWish = "ok";
+    }
+
+
 
 
   if (isValid) {
