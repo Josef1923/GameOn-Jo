@@ -80,7 +80,7 @@
                 <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99"><div></div><br>
               </div>
               <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
-
+              <div class="error-message" id="error-message"></div>
               <div class="formData">
                 <input class="checkbox-input" type="radio" id="location1" name="location" value="New York">
                   <label class="checkbox-label" for="location1">
@@ -125,8 +125,14 @@
                 <br>
               </div>
                  <input class="btn-submit" type="submit" value="C'est parti">
+              </form>
+
             
-            </form>
+            <div class = "modal-confirmation">
+            <p class="text-center">Merci pour <br>votre inscription.</p>
+            <input class="btn-close" type="submit" value="Fermer">
+          </div>
+            </div>
           </div>
         </div>
       </div>

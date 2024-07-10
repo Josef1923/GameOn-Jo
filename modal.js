@@ -26,6 +26,8 @@ function editNav() {
  const form = document.querySelector('form'); // Element form
  const error = document.querySelectorAll(".error_message"); // Element erreur
  
+const modalConfirmation = document.querySelector(".modal-confirmation"); 
+const modalBody = document.querySelector(".modal-body")
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -139,13 +141,24 @@ event.preventDefault();
 
      //verification lieu de participation
      
-     
+     let errorMessageElement = document.getElementById('error-message');
+    errorMessageElement.textContent = "";
+    errorMessageElement.style.fontSize = "";
+    errorMessageElement.style.color = "";
+
+     let locationSelect = false;
      for (let i = 0; i < ListRadio.length; i++) {
       if (ListRadio[i].checked) {
-        Location = ListRadio[i].value;
-        console.log(Location);
+        Location = ListRadio[i].value; //pour avoir la value selctionnée, affichage possible console
+        locationSelect = true;
         break;
       } 
+     }
+     if (!locationSelect) {
+      errorMessageElement.textContent = "Vous devez selectionner un lieu de participation ci-dessous.";
+      errorMessageElement.style.fontSize = "0.5em";
+      errorMessageElement.style.color = "#e54858";     
+      isValid = false;
      }
 
      //verification acceptation des conditions d'utilisation
@@ -172,12 +185,18 @@ event.preventDefault();
       InfoWish = "ok";
     }
 
-
-
+    //envoi formulaire si tout est valide //
 
   if (isValid) {
+    modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
+    form.style.display = 'none';
+    
+    modalConfirmation.style.display = 'block';
     console.log("Formulaire valide")
+   
   }
 
-
+  //masquer et afficher modal de confirmation suivant alidation ok ou non//
+  
 });
+
