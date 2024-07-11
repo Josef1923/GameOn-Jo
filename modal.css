@@ -23,7 +23,7 @@ body {
 
 p {
   margin-bottom: 0;
-  padding: 0.5vw;
+  
 }
 
 img {
@@ -33,20 +33,21 @@ img {
 .topnav {
   overflow: hidden;
   margin: 3.5%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
+
 .header-logo {
-    float: left;
+  padding-bottom: 15px;
 }
-.main-navbar {
-    float: right;
-}
-.topnav a {
+
+.topnav a { 
   float: left;
-  display: block;
   color: #000000;
   text-align: center;
-  padding: 12px 12px;
-  margin: 5px;
+  padding: 10px 10px;
+  margin: 4px;
   text-decoration: none;
   font-size: 20px;
   font-family: Roboto, sans-serif;
@@ -431,8 +432,7 @@ input[data-error]::after {
   font-weight: normal;
   font-size: 16px;
 }
-.hero-section {
-  min-height: 93vh;
+.hero-section {  
   border-radius: 10px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -446,9 +446,10 @@ input[data-error]::after {
   background: #232323;
   color: #fff;
   position: relative;
-  text-align: left;
-  min-width: 424px;
+  text-align: left;  
+  
 }
+
 .hero-content::after {
   content: "";
   width: 100%;
