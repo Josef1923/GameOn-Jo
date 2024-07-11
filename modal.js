@@ -29,6 +29,7 @@ function editNav() {
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
 const modalBody = document.querySelector(".modal-body")
 
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
@@ -197,6 +198,7 @@ event.preventDefault();
   }
 
   //masquer et afficher modal de confirmation suivant alidation ok ou non//
+  
   
 });
 
