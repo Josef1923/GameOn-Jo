@@ -187,6 +187,18 @@ main {
   padding-top: 10px;
 }
 
+@media screen and (max-width: 768px) {
+  .content {
+    max-width: none;
+   margin-top: 90px;
+  
+  }
+  
+  .bground {
+    background-color: transparent;
+  }
+}
+
 .modal-body {
   padding: 15px 8%;
   margin: 15px auto;
