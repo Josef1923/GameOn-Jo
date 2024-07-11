@@ -27,8 +27,8 @@ function editNav() {
  const error = document.querySelectorAll(".error_message"); // Element erreur
  
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
-const modalBody = document.querySelector(".modal-body")
-
+const modalBody = document.querySelector(".modal-body");
+const CloseInscription = document.querySelector(".btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -197,8 +197,18 @@ event.preventDefault();
    
   }
 
-  //masquer et afficher modal de confirmation suivant alidation ok ou non//
-  
+
   
 });
 
+//fermeture modal//
+CloseInscription.addEventListener("click", closeConfirmationModal);
+
+function closeConfirmationModal() {
+  modalbg.style.display = "none";
+  modalConfirmation.style.display = 'none';
+  form.style.display = 'block';
+  form.reset();
+  modalBody.style.height = '';
+}
+  
