@@ -234,8 +234,6 @@ input {
   height: 48px;
 }
 
-
-
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -260,6 +258,8 @@ input[data-error]::after {
     font-size: 0.4em;
     color: red;
 } */
+
+
 .checkbox-label,
 .checkbox2-label {
   position: relative;
@@ -361,6 +361,11 @@ input[data-error]::after {
   cursor: pointer;
   border: 0;
 }
+
+.btn-submit:hover {
+  background: #3876ac;
+}
+
 /* custom select styles */
 .custom-select {
   position: relative;
