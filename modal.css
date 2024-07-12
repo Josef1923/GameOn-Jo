@@ -564,6 +564,7 @@ footer {
 
 .modal-confirmation {
   display: none;
+}
 
   .btn-close {
     display: flex;
@@ -580,10 +581,14 @@ footer {
     left: 50%;
     transform: translateX(-50%);
   }
+
+  .btn-close:hover {
+    background: #3876ac;
+  }
   
   .text-center {
     text-align: center;
     font-size: 36px;
     margin-bottom: 50px;
   }
-}
+
