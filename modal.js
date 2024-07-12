@@ -8,27 +8,27 @@ function editNav() {
 }
 
  // DOM Elements
- const modalbg = document.querySelector(".bground");
+ const modalBg = document.querySelector(".bground");
  const modalBtn = document.querySelectorAll(".modal-btn");
  const formData = document.querySelectorAll(".formData");
  
  // DOM Rajoutés projet
  const close = document.querySelector(".close"); // Element (X) 
- const ForeName = document.getElementById("first"); // Element prénom
- const LastName = document.getElementById("last"); // Element nom
+ const foreName = document.getElementById("first"); // Element prénom
+ const lastName = document.getElementById("last"); // Element nom
  const email = document.getElementById("email"); // Element mail
- const BirthDate = document.getElementById("birthdate"); // Element birth
+ const birthDate = document.getElementById("birthdate"); // Element birth
  const quantity = document.getElementById("quantity"); // Elemnt quantité
- const ListRadio = document.querySelectorAll("input[type=radio]"); // Element radio
- const CheckAccept1 = document.getElementById("checkbox1"); // Element checkbox condition d'utilisation
- const CheckAccept2 = document.getElementById("checkbox2"); // Element checkbox souhait d'informations
+ const listRadio = document.querySelectorAll("input[type=radio]"); // Element radio
+ const checkAccept1 = document.getElementById("checkbox1"); // Element checkbox condition d'utilisation
+ const checkAccept2 = document.getElementById("checkbox2"); // Element checkbox souhait d'informations
 
  const form = document.querySelector('form'); // Element form
  const error = document.querySelectorAll(".error_message"); // Element erreur
  
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
 const modalBody = document.querySelector(".modal-body");
-const CloseInscription = document.querySelector(".btn-close");
+const closeInscription = document.querySelector(".btn-close");
 
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
@@ -36,7 +36,7 @@ modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 
 // launch modal form
 function launchModal() {
-  modalbg.style.display = "block";
+  modalBg.style.display = "block";
 }
 
 
@@ -45,7 +45,7 @@ close.addEventListener("click", closeModal);
 
 //close modal form Josef
 function closeModal() {
-  modalbg.style.display = "none";
+  modalBg.style.display = "none";
 }
   
 
@@ -59,34 +59,34 @@ event.preventDefault();
   
   //vérification firstname 
 
-  let ForeNamedivElement = ForeName.parentElement.querySelector('div');
-  ForeNamedivElement.textContent = "";
-  ForeNamedivElement.style.fontSize = "";
-  ForeNamedivElement.style.color = "";
-  ForeName.style.border = "";
+  let foreNamedivElement = foreName.parentElement.querySelector('div');
+  foreNamedivElement.textContent = "";
+  foreNamedivElement.style.fontSize = "";
+  foreNamedivElement.style.color = "";
+  foreName.style.border = "";
 
-  if (ForeName.value.length < 2) {    
-    ForeNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom. ";
-    ForeNamedivElement.style.fontSize = "0.5em"; 
-    ForeNamedivElement.style.color = "#e54858"; 
-    ForeName.style.border = "2px solid red";
+  if (foreName.value.length < 2) {    
+    foreNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom. ";
+    foreNamedivElement.style.fontSize = "0.5em"; 
+    foreNamedivElement.style.color = "#e54858"; 
+    foreName.style.border = "2px solid red";
     
     isValid = false;
   }
 
   //verification last 
 
-  let LastNamedivElement = LastName.parentElement.querySelector('div');
-  LastNamedivElement.textContent = "";
-  LastNamedivElement.style.fontSize = "";
-  LastNamedivElement.style.color = "";
-  LastName.style.border = "";
+  let lastNamedivElement = lastName.parentElement.querySelector('div');
+  lastNamedivElement.textContent = "";
+  lastNamedivElement.style.fontSize = "";
+  lastNamedivElement.style.color = "";
+  lastName.style.border = "";
 
-  if (LastName.value.length < 2) {    
-    LastNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom. "
-    LastNamedivElement.style.fontSize = "0.5em"; 
-    LastNamedivElement.style.color = "#e54858"; 
-    LastName.style.border = "2px solid red";
+  if (lastName.value.length < 2) {    
+    lastNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom. "
+    lastNamedivElement.style.fontSize = "0.5em"; 
+    lastNamedivElement.style.color = "#e54858"; 
+    lastName.style.border = "2px solid red";
     isValid = false;
   }
 
@@ -110,16 +110,16 @@ event.preventDefault();
 
   //verification birthdate
 
-  let BirthDatedivElement = BirthDate.parentElement.querySelector('div');
-  BirthDatedivElement.textContent = "";
-  BirthDatedivElement.style.fontSize = "";
-  BirthDatedivElement.style.color = "";
-  BirthDate.style.border = "";
-  if (!BirthDate.value) {    
-    BirthDatedivElement.textContent = "Vous devez entrer votre date de naissance.";
-    BirthDatedivElement.style.fontSize = "0.5em"; 
-    BirthDatedivElement.style.color = "#e54858";
-    BirthDate.style.border = "2px solid red";
+  let birthDatedivElement = birthDate.parentElement.querySelector('div');
+  birthDatedivElement.textContent = "";
+  birthDatedivElement.style.fontSize = "";
+  birthDatedivElement.style.color = "";
+  birthDate.style.border = "";
+  if (!birthDate.value) {    
+    birthDatedivElement.textContent = "Vous devez entrer votre date de naissance.";
+    birthDatedivElement.style.fontSize = "0.5em"; 
+    birthDatedivElement.style.color = "#e54858";
+    birthDate.style.border = "2px solid red";
     isValid = false;
   }
 
@@ -148,9 +148,9 @@ event.preventDefault();
     errorMessageElement.style.color = "";
 
      let locationSelect = false;
-     for (let i = 0; i < ListRadio.length; i++) {
-      if (ListRadio[i].checked) {
-        Location = ListRadio[i].value; //pour avoir la value selctionnée, affichage possible console
+     for (let i = 0; i < listRadio.length; i++) {
+      if (listRadio[i].checked) {
+        Location = listRadio[i].value; //pour avoir la value selctionnée, affichage possible console
         locationSelect = true;
         break;
       } 
@@ -163,15 +163,15 @@ event.preventDefault();
      }
 
      //verification acceptation des conditions d'utilisation
-     let CheckAccept1divElement = CheckAccept1.parentElement.querySelector('div');
-     CheckAccept1divElement.textContent = "";
-     CheckAccept1divElement.style.fontSize = "";
-     CheckAccept1divElement.style.color = "";
+     let checkAccept1divElement = checkAccept1.parentElement.querySelector('div');
+     checkAccept1divElement.textContent = "";
+     checkAccept1divElement.style.fontSize = "";
+     checkAccept1divElement.style.color = "";
      
      if (!checkbox1.checked) {
-      CheckAccept1divElement.textContent = "Vous devez accepter les conditions d'utilisation.";
-      CheckAccept1divElement.style.fontSize = "0.5em"; 
-      CheckAccept1divElement.style.color = "#e54858";
+      checkAccept1divElement.textContent = "Vous devez accepter les conditions d'utilisation.";
+      checkAccept1divElement.style.fontSize = "0.5em"; 
+      checkAccept1divElement.style.color = "#e54858";
       
   
       
@@ -182,7 +182,7 @@ event.preventDefault();
      //verification souhait information des prochains évenements
 
     let InfoWish = ""
-    if (CheckAccept2.checked) {
+    if (checkAccept2.checked) {
       InfoWish = "ok";
     }
 
@@ -202,10 +202,10 @@ event.preventDefault();
 });
 
 //fermeture modal//
-CloseInscription.addEventListener("click", closeConfirmationModal);
+closeInscription.addEventListener("click", closeConfirmationModal);
 
 function closeConfirmationModal() {
-  modalbg.style.display = "none";
+  modalBg.style.display = "none";
   modalConfirmation.style.display = 'none';
   form.style.display = 'block';
   form.reset();
