@@ -39,7 +39,11 @@ img {
 }
 
 .header-logo {
-  padding-bottom: 15px;
+  margin-top: -15px;
+}
+
+.main-navbar {
+  margin-top: 5px;
 }
 
 .topnav a { 
@@ -561,7 +565,7 @@ footer {
 }
 
 
-
+/*ajout*/
 .modal-confirmation {
   display: none;
 }
