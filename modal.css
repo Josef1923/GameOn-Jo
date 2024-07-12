@@ -10,8 +10,7 @@
 }
 /* Landing Page */
 
-body {
-  margin: 0;
+body {  
   display: flex;
   flex-direction: column;
   background-image: url("background.png");
@@ -22,8 +21,7 @@ body {
 }
 
 p {
-  margin-bottom: 0;
-  
+  margin-bottom: 0;  
 }
 
 img {
@@ -36,10 +34,6 @@ img {
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
-}
-
-.header-logo {
-  margin-top: -15px;
 }
 
 .main-navbar {
