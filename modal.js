@@ -13,18 +13,18 @@ function editNav() {
  const formData = document.querySelectorAll(".formData");
  
  // DOM Rajoutés projet
- const close = document.querySelector(".close"); // Element (X) 
- const foreName = document.getElementById("first"); // Element prénom
- const lastName = document.getElementById("last"); // Element nom
- const email = document.getElementById("email"); // Element mail
- const birthDate = document.getElementById("birthdate"); // Element birth
- const quantity = document.getElementById("quantity"); // Elemnt quantité
- const listRadio = document.querySelectorAll("input[type=radio]"); // Element radio
- const checkAccept1 = document.getElementById("checkbox1"); // Element checkbox condition d'utilisation
- const checkAccept2 = document.getElementById("checkbox2"); // Element checkbox souhait d'informations
+ const close = document.querySelector(".close");
+ const foreName = document.getElementById("first");
+ const lastName = document.getElementById("last");
+ const email = document.getElementById("email"); 
+ const birthDate = document.getElementById("birthdate");
+ const quantity = document.getElementById("quantity"); 
+ const listRadio = document.querySelectorAll("input[type=radio]");
+ const checkAccept1 = document.getElementById("checkbox1");
+ const checkAccept2 = document.getElementById("checkbox2");
 
- const form = document.querySelector('form'); // Element form
- const error = document.querySelectorAll(".error_message"); // Element erreur
+ const form = document.querySelector('form');
+ const error = document.querySelectorAll(".error_message"); 
  
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
 const modalBody = document.querySelector(".modal-body");
@@ -179,13 +179,6 @@ event.preventDefault();
 
      }
 
-     //verification souhait information des prochains évenements
-
-    let InfoWish = ""
-    if (checkAccept2.checked) {
-      InfoWish = "ok";
-    }
-
     //envoi formulaire si tout est valide //
 
   if (isValid) {
@@ -195,10 +188,7 @@ event.preventDefault();
     modalConfirmation.style.display = 'block';
     console.log("Formulaire valide")
    
-  }
-
-
-  
+  }  
 });
 
 //fermeture modal//
