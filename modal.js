@@ -98,7 +98,7 @@ event.preventDefault();
   emaildivElement.style.color = "";
   email.style.border = "";
 
-  let emailRegExp = /[a-z0-9._-]+@[a-z0-9._-]+\.[a-z0-9._-]/;
+  let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,}$/i;
 
   if (!emailRegExp.test(email.value)) {    
     emaildivElement.textContent = "Veuillez entrer une adresse mail valide. "
