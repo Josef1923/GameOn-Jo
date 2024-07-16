@@ -121,7 +121,13 @@ event.preventDefault();
     birthDatedivElement.style.color = "#e54858";
     birthDate.style.border = "2px solid red";
     isValid = false;
-  }
+  } else if (new Date(birthDate.value) >= new Date()) {
+    birthDatedivElement.textContent = "La date de naissance doit être antérieure à aujourd'hui.";
+    birthDatedivElement.style.fontSize = "0.5em";
+    birthDatedivElement.style.color = "#e54858";
+    birthDate.style.border = "2px solid red";
+    isValid = false;
+}
 
     //verification nombre de participation
 
