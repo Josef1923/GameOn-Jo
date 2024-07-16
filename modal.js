@@ -48,47 +48,33 @@ function closeModal() {
   modalBg.style.display = "none";
 }
   
+// function de verifictaion des champs//
 
-  //Empechement comportement par défaut "submit"
+function messageError(inputDom, errorMessage, isValid) {
+  let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
+
+  if (!isValid) {
+    errorAlertClass.textContent = errorMessage ;     
+  } else {
+    errorAlertClass.textContent = "";      
+  }
+}
+
+//Empechement comportement par défaut "submit"
   
 form.addEventListener("submit", (event) => {
 event.preventDefault();  
-
-
-  let isValid = true;  //variable true pour éviter les if dans le code de vérification
-  
+ 
   //vérification firstname 
+ {let isValid = foreName.value.length >= 2;
 
-  let foreNamedivElement = foreName.parentElement.querySelector('div');
-  foreNamedivElement.textContent = "";
-  foreNamedivElement.style.fontSize = "";
-  foreNamedivElement.style.color = "";
-  foreName.style.border = "";
+  messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);}
+ //verification last 
+ {let isValid = lastName.value.length >= 2;
+ messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);}
+ 
 
-  if (foreName.value.length < 2) {    
-    foreNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du prénom. ";
-    foreNamedivElement.style.fontSize = "0.5em"; 
-    foreNamedivElement.style.color = "#e54858"; 
-    foreName.style.border = "2px solid red";
-    
-    isValid = false;
-  }
 
-  //verification last 
-
-  let lastNamedivElement = lastName.parentElement.querySelector('div');
-  lastNamedivElement.textContent = "";
-  lastNamedivElement.style.fontSize = "";
-  lastNamedivElement.style.color = "";
-  lastName.style.border = "";
-
-  if (lastName.value.length < 2) {    
-    lastNamedivElement.textContent = "Veuillez entrer 2 caractères ou plus pour le champ du nom. "
-    lastNamedivElement.style.fontSize = "0.5em"; 
-    lastNamedivElement.style.color = "#e54858"; 
-    lastName.style.border = "2px solid red";
-    isValid = false;
-  }
 
   //verification mail
 
@@ -140,8 +126,7 @@ event.preventDefault();
       quantitydivElement.textContent = "Vous devez choisir un nombre.";
       quantitydivElement.style.fontSize = "0.5em"; 
       quantitydivElement.style.color = "#e54858";
-      quantity.style.border = "2px solid red";
-  
+      quantity.style.border = "2px solid red";  
       
         isValid = false;
     }
@@ -179,8 +164,6 @@ event.preventDefault();
       checkAccept1divElement.style.fontSize = "0.5em"; 
       checkAccept1divElement.style.color = "#e54858";
       
-  
-      
         isValid = false;
 
      }
@@ -189,11 +172,8 @@ event.preventDefault();
 
   if (isValid) {
     modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
-    form.style.display = 'none';
-    
-    modalConfirmation.style.display = 'block';
-    console.log("Formulaire valide")
-   
+    form.style.display = 'none';    
+    modalConfirmation.style.display = 'block';   
   }  
 });
 

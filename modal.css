@@ -578,3 +578,11 @@ footer {
     margin-bottom: 50px;
   }
 
+/* CSS pour message erreur JS*/
+
+.error_message {
+  font-size: 0.5em;
+  color: #E54858;
+}
+
+
