@@ -52,11 +52,13 @@ function closeModal() {
 
 function messageError(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
-
+  let errorBorder = inputDom.parentElement.querySelector(".text-control");
   if (!isValid) {
-    errorAlertClass.textContent = errorMessage ;     
+    errorAlertClass.textContent = errorMessage ;    
+    errorBorder.classList.add("error-border");
   } else {
-    errorAlertClass.textContent = "";      
+    errorAlertClass.textContent = "";  
+    errorBorder.Class.classList.remove("error-border");   
   }
 }
 
@@ -75,9 +77,7 @@ event.preventDefault();
  
 
 
-
   //verification mail
-
   let emaildivElement = email.parentElement.querySelector('div');
   emaildivElement.textContent = "";
   emaildivElement.style.fontSize = "";
@@ -87,12 +87,13 @@ event.preventDefault();
   let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/
 
   if (!emailRegExp.test(email.value)) {    
-    emaildivElement.textContent = "Veuillez entrer une adresse mail valide. "
+    emaildivElement.textContent = "Veuillez entrer une adresse mail valide."
     emaildivElement.style.fontSize = "0.5em"; 
     emaildivElement.style.color = "#e54858"; 
     email.style.border = "2px solid red";
     isValid = false;
   }
+
 
   //verification birthdate
 

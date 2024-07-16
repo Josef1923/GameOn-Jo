@@ -585,4 +585,6 @@ footer {
   color: #E54858;
 }
 
-
+.error-border {
+  border: 3px solid #E54858;
+}
