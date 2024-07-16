@@ -58,7 +58,7 @@ function messageError(inputDom, errorMessage, isValid) {
     errorBorder.classList.add("error-border");
   } else {
     errorAlertClass.textContent = "";  
-    errorBorder.Class.classList.remove("error-border");   
+    errorBorder.classList.remove("error-border");   
   }
 }
 
@@ -68,31 +68,20 @@ form.addEventListener("submit", (event) => {
 event.preventDefault();  
  
   //vérification firstname 
- {let isValid = foreName.value.length >= 2;
+ let isValid = foreName.value.length >= 2;
 
-  messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);}
+  messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);
  //verification last 
- {let isValid = lastName.value.length >= 2;
- messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);}
+ isValid = lastName.value.length >= 2;
+ messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);
  
-
+   //verification mail
+  let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
+  isValid = emailRegExp.test(email.value);
+  messageError(email, "Veuillez entrer une adresse mail valide.", isValid);
 
   //verification mail
-  let emaildivElement = email.parentElement.querySelector('div');
-  emaildivElement.textContent = "";
-  emaildivElement.style.fontSize = "";
-  emaildivElement.style.color = "";
-  email.style.border = "";
-
-  let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/
-
-  if (!emailRegExp.test(email.value)) {    
-    emaildivElement.textContent = "Veuillez entrer une adresse mail valide."
-    emaildivElement.style.fontSize = "0.5em"; 
-    emaildivElement.style.color = "#e54858"; 
-    email.style.border = "2px solid red";
-    isValid = false;
-  }
+ 
 
 
   //verification birthdate
