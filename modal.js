@@ -6,7 +6,6 @@ function editNav() {
     x.className = "topnav";
   }
 }
-
  // DOM Elements
  const modalBg = document.querySelector(".bground");
  const modalBtn = document.querySelectorAll(".modal-btn");
@@ -28,45 +27,35 @@ function editNav() {
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
 const modalBody = document.querySelector(".modal-body");
 const closeInscription = document.querySelector(".btn-close");
-
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
-
-
 // launch modal form
 function launchModal() {
   modalBg.style.display = "block";
 }
-
-
 //close modal event Josef
 close.addEventListener("click", closeModal);
-
 //close modal form Josef
 function closeModal() {
   modalBg.style.display = "none";
 }
   
 // function de verifictaion des champs//
-
 function messageError(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
   let errorBorder = inputDom.parentElement.querySelector(".text-control");
-
   if (!isValid) {
     errorAlertClass.textContent = errorMessage ;    
-    errorBorder.classList.add("error_border");
+    errorBorder.classList.add("error-border");
   } else {
     errorAlertClass.textContent = "";  
-    errorBorder.classList.remove("error_border");   
+    errorBorder.classList.remove("error-border");   
   }
 }
-
 //Empechement comportement par défaut "submit"
   
 form.addEventListener("submit", (event) => {
 event.preventDefault();  
- 
 //vérification firstname 
 let isValid = foreName.value.length >= 2;
 messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);
@@ -88,7 +77,6 @@ if (!birthDate.value) {
   isValid = true;
   messageError(birthDate, "", isValid);
 }
-
 //verification nombre de participations
 let nombreEntier = parseInt(quantity.value) >= 1;
 let nombreSansVirgule = /^\d+$/.test(quantity.value);
@@ -104,36 +92,23 @@ if (!nombreEntier) {
 
 //Vérification du lieu de participation
 
-let locationSelected = Array.from(listRadio).some(radio => radio.checked);
-messageError(listRadio, "Veuillez sélectionner une localisation.", locationSelected);
-
-if (!locationSelected) {
-    isValid = false; // Si aucune option n'est sélectionnée
-}
-
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
 messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isValid);
-
-
-
     //envoi formulaire si tout est valide //
 
-  if (isValid) {
-    modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
-    form.style.display = 'none';    
-    modalConfirmation.style.display = 'block';   
-  }  
-});
-
-//fermeture modal//
-closeInscription.addEventListener("click", closeConfirmationModal);
-
-function closeConfirmationModal() {
-  modalBg.style.display = "none";
-  modalConfirmation.style.display = 'none';
-  form.style.display = 'block';
-  form.reset();
-  modalBody.style.height = '';
-}
-  
+    if (isValid) {
+      modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
+      form.style.display = 'none';    
+      modalConfirmation.style.display = 'block';   
+    }  
+  });
+  //fermeture modal//
+  closeInscription.addEventListener("click", closeConfirmationModal);
+  function closeConfirmationModal() {
+    modalBg.style.display = "none";
+    modalConfirmation.style.display = 'none';
+    form.style.display = 'block';
+    form.reset();
+    modalBody.style.height = '';
+  }
