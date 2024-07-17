@@ -52,12 +52,13 @@ function closeModal() {
 function messageError(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
   let errorBorder = inputDom.parentElement.querySelector(".text-control");
+
   if (!isValid) {
     errorAlertClass.textContent = errorMessage ;    
-    errorBorder.classList.add("error-border");
+    errorBorder.classList.add("error_border");
   } else {
     errorAlertClass.textContent = "";  
-    errorBorder.classList.remove("error-border");   
+    errorBorder.classList.remove("error_border");   
   }
 }
 
@@ -103,9 +104,17 @@ if (!nombreEntier) {
 
 //Vérification du lieu de participation
 
+let locationSelected = Array.from(listRadio).some(radio => radio.checked);
+messageError(listRadio, "Veuillez sélectionner une localisation.", locationSelected);
+
+if (!locationSelected) {
+    isValid = false; // Si aucune option n'est sélectionnée
+}
+
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
 messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isValid);
+
 
 
     //envoi formulaire si tout est valide //

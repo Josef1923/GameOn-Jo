@@ -213,7 +213,7 @@ main {
 
 label {
   font-family: var(--font-default);
-  font-size: 12px;
+  font-size: 14px;
   font-weight: normal;
   display: inline-block;
   margin-bottom: 11px;
@@ -232,6 +232,7 @@ input {
   height: 48px;
 }
 
+/* a voir mentorat
 .formData[data-error]::after {
   content: attr(data-error);
   font-size: 0.4em;
@@ -244,7 +245,7 @@ input {
   opacity: 0;
   transition: 0.3s;
 }
-
+*/
 
 .checkbox-label,
 .checkbox2-label {
@@ -421,7 +422,7 @@ input {
 /* custom select end */
 .text-label {
   font-weight: normal;
-  font-size: 16px;
+  font-size: 14px;
 }
 .hero-section {  
   border-radius: 10px;
@@ -581,10 +582,10 @@ footer {
 /* CSS pour message erreur JS*/
 
 .error_message {
-  font-size: 0.5em;
+  font-size: 0.7em;
   color: #E54858;
 }
 
-.error-border {
+.error_border {
   border: 3px solid #E54858;
 }
