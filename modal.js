@@ -21,7 +21,6 @@ function editNav() {
  const quantity = document.getElementById("quantity"); 
  const listRadio = document.querySelectorAll("input[type=radio]");
  const checkAccept1 = document.getElementById("checkbox1");
- const checkAccept2 = document.getElementById("checkbox2");
 
  const form = document.querySelector('form');
  const error = document.querySelectorAll(".error_message"); 
@@ -67,96 +66,47 @@ function messageError(inputDom, errorMessage, isValid) {
 form.addEventListener("submit", (event) => {
 event.preventDefault();  
  
-  //vérification firstname 
- let isValid = foreName.value.length >= 2;
+//vérification firstname 
+let isValid = foreName.value.length >= 2;
+messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);
+//verification last 
+isValid = lastName.value.length >= 2;
+messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);
 
-  messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);
- //verification last 
- isValid = lastName.value.length >= 2;
- messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);
- 
-   //verification mail
-  let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
-  isValid = emailRegExp.test(email.value);
-  messageError(email, "Veuillez entrer une adresse mail valide.", isValid);
+//verification mail
+let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
+isValid = emailRegExp.test(email.value);
+messageError(email, "Veuillez entrer une adresse mail valide.", isValid);
 
-  //verification mail
- 
-
-
-  //verification birthdate
-
-  let birthDatedivElement = birthDate.parentElement.querySelector('div');
-  birthDatedivElement.textContent = "";
-  birthDatedivElement.style.fontSize = "";
-  birthDatedivElement.style.color = "";
-  birthDate.style.border = "";
-  if (!birthDate.value) {    
-    birthDatedivElement.textContent = "Vous devez entrer votre date de naissance.";
-    birthDatedivElement.style.fontSize = "0.5em"; 
-    birthDatedivElement.style.color = "#e54858";
-    birthDate.style.border = "2px solid red";
-    isValid = false;
-  } else if (new Date(birthDate.value) >= new Date()) {
-    birthDatedivElement.textContent = "La date de naissance doit être antérieure à aujourd'hui.";
-    birthDatedivElement.style.fontSize = "0.5em";
-    birthDatedivElement.style.color = "#e54858";
-    birthDate.style.border = "2px solid red";
-    isValid = false;
+//verification birthdate
+if (!birthDate.value) {  
+  messageError(birthDate, "Veuillez entrer votre date de naissance.");
+} else if (new Date(birthDate.value) >= new Date()) {  
+  messageError(birthDate, "La date de naissance ne peut pas être dans le futur.");
+} else {  
+  isValid = true;
+  messageError(birthDate, "", isValid);
 }
 
-    //verification nombre de participation
+//verification nombre de participations
+let nombreEntier = parseInt(quantity.value) >= 1;
+let nombreSansVirgule = /^\d+$/.test(quantity.value);
 
-    let quantitydivElement = quantity.parentElement.querySelector('div');
-    quantitydivElement.textContent = "";
-    quantitydivElement.style.fontSize = "";
-    quantitydivElement.style.color = "";
-    quantity.style.border = "";
-    if (quantity.value < "1") {    
-      quantitydivElement.textContent = "Vous devez choisir un nombre.";
-      quantitydivElement.style.fontSize = "0.5em"; 
-      quantitydivElement.style.color = "#e54858";
-      quantity.style.border = "2px solid red";  
-      
-        isValid = false;
-    }
+if (!nombreEntier) {
+  messageError(quantity, "Vous devez saisir un nombre.");
+} else if (!nombreSansVirgule) {
+  messageError(quantity, "Vous ne pouvez pas saisir un nombre à virgule.");
+} else {
+  isValid = true;
+  messageError(quantity, "",isValid);
+}
 
-     //verification lieu de participation
-     
-     let errorMessageElement = document.getElementById('error-message');
-    errorMessageElement.textContent = "";
-    errorMessageElement.style.fontSize = "";
-    errorMessageElement.style.color = "";
+//Vérification du lieu de participation
 
-     let locationSelect = false;
-     for (let i = 0; i < listRadio.length; i++) {
-      if (listRadio[i].checked) {
-        Location = listRadio[i].value; //pour avoir la value selctionnée, affichage possible console
-        locationSelect = true;
-        break;
-      } 
-     }
-     if (!locationSelect) {
-      errorMessageElement.textContent = "Vous devez selectionner un lieu de participation ci-dessous.";
-      errorMessageElement.style.fontSize = "0.5em";
-      errorMessageElement.style.color = "#e54858";     
-      isValid = false;
-     }
+//verification acceptation des conditions d'utilisation
+isValid = checkbox1.checked;
+messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isValid);
 
-     //verification acceptation des conditions d'utilisation
-     let checkAccept1divElement = checkAccept1.parentElement.querySelector('div');
-     checkAccept1divElement.textContent = "";
-     checkAccept1divElement.style.fontSize = "";
-     checkAccept1divElement.style.color = "";
-     
-     if (!checkbox1.checked) {
-      checkAccept1divElement.textContent = "Vous devez accepter les conditions d'utilisation.";
-      checkAccept1divElement.style.fontSize = "0.5em"; 
-      checkAccept1divElement.style.color = "#e54858";
-      
-        isValid = false;
-
-     }
 
     //envoi formulaire si tout est valide //
 
