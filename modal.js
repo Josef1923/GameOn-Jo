@@ -46,10 +46,10 @@ function messageError(inputDom, errorMessage, isValid) {
   let errorBorder = inputDom.parentElement.querySelector(".text-control");
   if (!isValid) {
     errorAlertClass.textContent = errorMessage ;    
-    errorBorder.classList.add("error-border");
+    errorBorder.classList.add("error_border");
   } else {
     errorAlertClass.textContent = "";  
-    errorBorder.classList.remove("error-border");   
+    errorBorder.classList.remove("error_border");   
   }
 }
 //Empechement comportement par défaut "submit"
@@ -103,6 +103,7 @@ messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isVal
       modalConfirmation.style.display = 'block';   
     }  
   });
+
   //fermeture modal//
   closeInscription.addEventListener("click", closeConfirmationModal);
   function closeConfirmationModal() {
