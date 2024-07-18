@@ -547,8 +547,22 @@ footer {
   }
 }
 
+/* Rajout pour responsive JS*/
+@media screen and (max-width: 1000px) {
+  .hero-headline {
+    font-size: 4rem;
+  }
 
-/*ajout*/
+  .hero-content {
+    padding: 40px 30px; 
+  }
+
+  .hero-text {
+    width: 100%;
+  }
+}
+
+/*ajout confirmation JS */
 .modal-confirmation {
   display: none;
 }
