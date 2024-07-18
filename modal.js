@@ -45,10 +45,12 @@ function messageError(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
   let errorBorder = inputDom.parentElement.querySelector(".text-control");
   if (!isValid) {
-    errorAlertClass.textContent = errorMessage ;    
+    errorAlertClass.textContent = errorMessage ;  
+    if(errorBorder)  
     errorBorder.classList.add("error_border");
   } else {
     errorAlertClass.textContent = "";  
+    if(errorBorder)
     errorBorder.classList.remove("error_border");   
   }
 }
@@ -91,6 +93,7 @@ if (!nombreEntier) {
 }
 
 //Vérification du lieu de participation
+
 
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
