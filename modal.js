@@ -71,70 +71,61 @@ function messageError(inputDom, errorMessage, isValid) {
     errorBorder.classList.remove("error_border");   
   }
 }
-//Empechement comportement par défaut "submit"
-  
+
+//Empechement comportement par défaut "submit"  
 form.addEventListener("submit", (event) => {
 event.preventDefault();  
+
+//initialisation Form (empeche de valider en cochant juste les conditions)
+let isFormValid = true;
+
 //vérification firstname 
 let isValid = foreName.value.length >= 2;
 messageError(foreName, errorMessages.firstName, isValid);
+if (!isValid) isFormValid = false;
+
+
 //verification last 
 isValid = lastName.value.length >= 2;
 messageError(lastName, errorMessages.lastName, isValid);
+if (!isValid) isFormValid = false;
+
 
 //verification mail
 let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
 isValid = emailRegExp.test(email.value);
 messageError(email, errorMessages.email, isValid);
+if (!isValid) isFormValid = false;
+
 
 //verification birthdate
+isValid = birthDate.value && new Date(birthDate.value) < new Date();
+messageError(birthDate, isValid ? "" : (!birthDate.value ? errorMessages.birthDateEmpty : errorMessages.birthDateFuture), isValid);
+if (!isValid) isFormValid = false;
 
-if (!birthDate.value) {  
-  messageError(birthDate, errorMessages.birthDateEmpty);
-} else if (new Date(birthDate.value) >= new Date()) {  
-  messageError(birthDate, errorMessages.birthDateFuture);
-} else {  
-  isValid = true;
-  messageError(birthDate, "", isValid);
-}
+
 
 //verification nombre de participations
-let nombreEntier = parseInt(quantity.value) >= 1;
-let nombreSansVirgule = /^\d+$/.test(quantity.value);
+isValid = parseInt(quantity.value) >= 1 && /^\d+$/.test(quantity.value);
+messageError(quantity, isValid ? "" : (!quantity.value ? errorMessages.quantityNumber : errorMessages.quantityInteger), isValid);
+if (!isValid) isFormValid = false;
 
-if (!nombreEntier) {
-  messageError(quantity, errorMessages.quantityNumber);
-} else if (!nombreSansVirgule) {
-  messageError(quantity, errorMessages.quantityInteger);
-} else {
-  isValid = true;
-  messageError(quantity, "",isValid);
-}
 
 //Vérification du lieu de participation
 
-let locationSelect = false;
 
-for (let i = 0; i < listRadio.length; i++) {
- if (listRadio[i].checked) {
-    locationSelect = true;
-   break;
- } 
-}
- if (!locationSelect) {
-  messageError(listRadio[0], errorMessages.location,false);
-  isValid = false
- } else {
-  messageError(listRadio[0], "",isValid);
-}
-
+  const locationSelect = Array.from(listRadio).some(radio => radio.checked);
+  messageError(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
+  if (!locationSelect) isFormValid = false;
 
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
 messageError(checkbox1, errorMessages.acceptTerms, isValid);
+if (!isValid) isFormValid = false;
+
     //envoi formulaire si tout est valide //
 
-    if (isValid) {
+    if (isFormValid) {
       modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
       form.style.display = 'none';    
       modalConfirmation.style.display = 'block';   
