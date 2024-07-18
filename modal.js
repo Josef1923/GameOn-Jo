@@ -95,6 +95,28 @@ if (!nombreEntier) {
 //Vérification du lieu de participation
 
 
+// Vérification du lieu de participation
+
+let errorMessageElement = document.getElementById('error-message');
+errorMessageElement.textContent = "";
+errorMessageElement.style.fontSize = "";
+errorMessageElement.style.color = "";
+ let locationSelect = false;
+ for (let i = 0; i < listRadio.length; i++) {
+  if (listRadio[i].checked) {
+    Location = listRadio[i].value; //pour avoir la value selctionnée, affichage possible console
+    locationSelect = true;
+    break;
+  } 
+ }
+ if (!locationSelect) {
+  errorMessageElement.textContent = "Vous devez selectionner un lieu de participation ci-dessous.";
+  errorMessageElement.style.fontSize = "0.5em";
+  errorMessageElement.style.color = "#e54858";     
+  isValid = false;
+ }
+
+
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
 messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isValid);
