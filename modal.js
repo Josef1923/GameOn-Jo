@@ -94,27 +94,20 @@ if (!nombreEntier) {
 
 //Vérification du lieu de participation
 
+let locationSelect = false;
 
-// Vérification du lieu de participation
-
-let errorMessageElement = document.getElementById('error-message');
-errorMessageElement.textContent = "";
-errorMessageElement.style.fontSize = "";
-errorMessageElement.style.color = "";
- let locationSelect = false;
- for (let i = 0; i < listRadio.length; i++) {
-  if (listRadio[i].checked) {
-    Location = listRadio[i].value; //pour avoir la value selctionnée, affichage possible console
+for (let i = 0; i < listRadio.length; i++) {
+ if (listRadio[i].checked) {
     locationSelect = true;
-    break;
-  } 
- }
+   break;
+ } 
+}
  if (!locationSelect) {
-  errorMessageElement.textContent = "Vous devez selectionner un lieu de participation ci-dessous.";
-  errorMessageElement.style.fontSize = "0.5em";
-  errorMessageElement.style.color = "#e54858";     
-  isValid = false;
- }
+  messageError(listRadio[0], "Vous devez sélectionner un lieu de participation ci-dessous.",false);
+  isValid = false
+ } else {
+  messageError(listRadio[0], "",isValid);
+}
 
 
 //verification acceptation des conditions d'utilisation
