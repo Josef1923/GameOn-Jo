@@ -24,9 +24,26 @@ function editNav() {
  const form = document.querySelector('form');
  const error = document.querySelectorAll(".error_message"); 
  
-const modalConfirmation = document.querySelector(".modal-confirmation"); 
-const modalBody = document.querySelector(".modal-body");
-const closeInscription = document.querySelector(".btn-close");
+ const modalConfirmation = document.querySelector(".modal-confirmation"); 
+ const modalBody = document.querySelector(".modal-body");
+ const closeInscription = document.querySelector(".btn-close");
+
+//const messages d'erreur 
+
+const errorMessages = {
+  firstName: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
+  lastName: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
+  email: "Veuillez entrer une adresse mail valide.",
+  birthDateEmpty: "Veuillez entrer votre date de naissance.",
+  birthDateFuture: "La date de naissance ne peut pas être dans le futur.",
+  quantityNumber: "Vous devez saisir un nombre.",
+  quantityInteger: "Vous ne pouvez pas saisir un nombre à virgule.",
+  location: "Vous devez sélectionner un lieu de participation ci-dessous.",
+  acceptTerms: "Veuillez accepter les conditions d'utilisation."
+};
+
+
+
 // launch modal event
 modalBtn.forEach((btn) => btn.addEventListener("click", launchModal));
 // launch modal form
@@ -60,33 +77,35 @@ form.addEventListener("submit", (event) => {
 event.preventDefault();  
 //vérification firstname 
 let isValid = foreName.value.length >= 2;
-messageError(foreName, "Veuillez entrer 2 caractères ou plus pour le champ du prénom.", isValid);
+messageError(foreName, errorMessages.firstName, isValid);
 //verification last 
 isValid = lastName.value.length >= 2;
-messageError(lastName, "Veuillez entrer 2 caractères ou plus pour le champ du nom.", isValid);
+messageError(lastName, errorMessages.lastName, isValid);
 
 //verification mail
 let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
 isValid = emailRegExp.test(email.value);
-messageError(email, "Veuillez entrer une adresse mail valide.", isValid);
+messageError(email, errorMessages.email, isValid);
 
 //verification birthdate
+
 if (!birthDate.value) {  
-  messageError(birthDate, "Veuillez entrer votre date de naissance.");
+  messageError(birthDate, errorMessages.birthDateEmpty);
 } else if (new Date(birthDate.value) >= new Date()) {  
-  messageError(birthDate, "La date de naissance ne peut pas être dans le futur.");
+  messageError(birthDate, errorMessages.birthDateFuture);
 } else {  
   isValid = true;
   messageError(birthDate, "", isValid);
 }
+
 //verification nombre de participations
 let nombreEntier = parseInt(quantity.value) >= 1;
 let nombreSansVirgule = /^\d+$/.test(quantity.value);
 
 if (!nombreEntier) {
-  messageError(quantity, "Vous devez saisir un nombre.");
+  messageError(quantity, errorMessages.quantityNumber);
 } else if (!nombreSansVirgule) {
-  messageError(quantity, "Vous ne pouvez pas saisir un nombre à virgule.");
+  messageError(quantity, errorMessages.quantityInteger);
 } else {
   isValid = true;
   messageError(quantity, "",isValid);
@@ -103,7 +122,7 @@ for (let i = 0; i < listRadio.length; i++) {
  } 
 }
  if (!locationSelect) {
-  messageError(listRadio[0], "Vous devez sélectionner un lieu de participation ci-dessous.",false);
+  messageError(listRadio[0], errorMessages.location,false);
   isValid = false
  } else {
   messageError(listRadio[0], "",isValid);
@@ -112,7 +131,7 @@ for (let i = 0; i < listRadio.length; i++) {
 
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
-messageError(checkbox1, "Veuillez accepter les conditions d'utilisation.", isValid);
+messageError(checkbox1, errorMessages.acceptTerms, isValid);
     //envoi formulaire si tout est valide //
 
     if (isValid) {
