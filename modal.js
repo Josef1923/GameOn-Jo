@@ -7,26 +7,26 @@ function editNav() {
   }
 }
  // DOM Elements
- const modalBg = document.querySelector(".bground");
- const modalBtn = document.querySelectorAll(".modal-btn");
- const formData = document.querySelectorAll(".formData");
- 
- // DOM Rajoutés projet
- const close = document.querySelector(".close");
- const foreName = document.getElementById("first");
- const lastName = document.getElementById("last");
- const email = document.getElementById("email"); 
- const birthDate = document.getElementById("birthdate");
- const quantity = document.getElementById("quantity"); 
- const listRadio = document.querySelectorAll("input[type=radio]");
- const checkAccept1 = document.getElementById("checkbox1");
+const modalBg = document.querySelector(".bground");
+const modalBtn = document.querySelectorAll(".modal-btn");
+const formData = document.querySelectorAll(".formData");
 
- const form = document.querySelector('form');
- const error = document.querySelectorAll(".error_message"); 
- 
- const modalConfirmation = document.querySelector(".modal-confirmation"); 
- const modalBody = document.querySelector(".modal-body");
- const closeInscription = document.querySelector(".btn-close");
+// DOM Rajoutés projet
+const close = document.querySelector(".close");
+const foreName = document.getElementById("first");
+const lastName = document.getElementById("last");
+const email = document.getElementById("email"); 
+const birthDate = document.getElementById("birthdate");
+const quantity = document.getElementById("quantity"); 
+const listRadio = document.querySelectorAll("input[type=radio]");
+const checkAccept1 = document.getElementById("checkbox1");
+
+const form = document.querySelector('form');
+const error = document.querySelectorAll(".error_message"); 
+
+const modalConfirmation = document.querySelector(".modal-confirmation"); 
+const modalBody = document.querySelector(".modal-body");
+const closeInscription = document.querySelector(".btn-close");
 
 //const messages d'erreur 
 
@@ -106,7 +106,7 @@ if (!isValid) isFormValid = false;
 
 
 //verification nombre de participations
-isValid = parseInt(quantity.value) >= 1 && /^\d+$/.test(quantity.value);
+isValid = parseInt(quantity.value) >= 1 && parseFloat(quantity.value) === parseInt(quantity.value);
 messageError(quantity, isValid ? "" : (!quantity.value ? errorMessages.quantityNumber : errorMessages.quantityInteger), isValid);
 if (!isValid) isFormValid = false;
 
@@ -114,30 +114,30 @@ if (!isValid) isFormValid = false;
 //Vérification du lieu de participation
 
 
-  const locationSelect = Array.from(listRadio).some(radio => radio.checked);
-  messageError(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
-  if (!locationSelect) isFormValid = false;
+const locationSelect = Array.from(listRadio).some(radio => radio.checked);
+messageError(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
+if (!locationSelect) isFormValid = false;
 
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
 messageError(checkbox1, errorMessages.acceptTerms, isValid);
 if (!isValid) isFormValid = false;
 
-    //envoi formulaire si tout est valide //
+//envoi formulaire si tout est valide //
 
-    if (isFormValid) {
-      modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
-      form.style.display = 'none';    
-      modalConfirmation.style.display = 'block';   
-    }  
-  });
+if (isFormValid) {
+  modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
+  form.style.display = 'none';    
+  modalConfirmation.style.display = 'block';   
+  }  
+});
 
-  //fermeture modal//
-  closeInscription.addEventListener("click", closeConfirmationModal);
-  function closeConfirmationModal() {
-    modalBg.style.display = "none";
-    modalConfirmation.style.display = 'none';
-    form.style.display = 'block';
-    form.reset();
-    modalBody.style.height = '';
-  }
+//fermeture modal//
+closeInscription.addEventListener("click", closeConfirmationModal);
+function closeConfirmationModal() {
+  modalBg.style.display = "none";
+  modalConfirmation.style.display = 'none';
+  form.style.display = 'block';
+  form.reset();
+  modalBody.style.height = '';
+}
