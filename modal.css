@@ -598,6 +598,7 @@ footer {
 .error_message {
   font-size: 0.5em;
   color: #E54858;
+  min-height: 16px;
 }
 
 .error_border {

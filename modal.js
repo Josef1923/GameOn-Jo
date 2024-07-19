@@ -56,7 +56,17 @@ close.addEventListener("click", closeModal);
 function closeModal() {
   modalBg.style.display = "none";
 }
-  
+
+//fermeture modal suite confirmation inscription//
+closeInscription.addEventListener("click", closeConfirmationModal);
+function closeConfirmationModal() {
+  modalBg.style.display = "none";
+  modalConfirmation.style.display = 'none';
+  form.style.display = 'block';
+  form.reset();
+  modalBody.style.height = '';
+}
+
 // function de verifictaion des champs//
 function messageError(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
@@ -132,12 +142,3 @@ if (isFormValid) {
   }  
 });
 
-//fermeture modal//
-closeInscription.addEventListener("click", closeConfirmationModal);
-function closeConfirmationModal() {
-  modalBg.style.display = "none";
-  modalConfirmation.style.display = 'none';
-  form.style.display = 'block';
-  form.reset();
-  modalBody.style.height = '';
-}
