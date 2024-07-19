@@ -92,7 +92,7 @@ if (!isValid) isFormValid = false;
 
 
 //verification mail
-let emailRegExp = /^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]+$/;
+let emailRegExp = /^[a-z0-9._\-]+@[a-z0-9._\-]+\.[a-z]+$/;
 isValid = emailRegExp.test(email.value);
 messageError(email, errorMessages.email, isValid);
 if (!isValid) isFormValid = false;
