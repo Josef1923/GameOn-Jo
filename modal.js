@@ -1,3 +1,6 @@
+// Ajout listener pour la navbar telmephione
+document.querySelector('.icon').addEventListener('click', editNav);
+
 function editNav() {
   var x = document.getElementById("myTopnav");
   if (x.className === "topnav") {
