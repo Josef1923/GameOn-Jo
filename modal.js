@@ -38,7 +38,7 @@ const errorMessages = {
   birthDateFuture: "La date de naissance ne peut pas être dans le futur.",
   quantityNumber: "Vous devez saisir un nombre.",
   quantityInteger: "Vous ne pouvez pas saisir un nombre à virgule.",
-  location: "Vous devez sélectionner un lieu de participation ci-dessous.",
+  location: "Vous devez sélectionner un lieu de participation ci-dessus.",
   acceptTerms: "Veuillez accepter les conditions d'utilisation."
 };
 
