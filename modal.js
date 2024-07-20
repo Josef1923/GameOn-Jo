@@ -70,8 +70,8 @@ function closeConfirmationModal() {
   modalBody.style.height = '';
 }
 
-// function de verifictaion des champs//
-function messageError(inputDom, errorMessage, isValid) {
+// function de verification des champs//
+function displayErrorMessage(inputDom, errorMessage, isValid) {
   let errorAlertClass = inputDom.parentElement.querySelector(".error_message");
   let errorBorder = inputDom.parentElement.querySelector(".text-control");
   if (!isValid) {
@@ -94,33 +94,33 @@ let isFormValid = true;
 
 //vérification firstname 
 let isValid = foreName.value.length >= 2;
-messageError(foreName, errorMessages.firstName, isValid);
+displayErrorMessage(foreName, errorMessages.firstName, isValid);
 if (!isValid) isFormValid = false;
 
 
 //verification last 
 isValid = lastName.value.length >= 2;
-messageError(lastName, errorMessages.lastName, isValid);
+displayErrorMessage(lastName, errorMessages.lastName, isValid);
 if (!isValid) isFormValid = false;
 
 
 //verification mail
 let emailRegExp = /^[a-z0-9._\-]+@[a-z0-9._\-]+\.[a-z]+$/;
 isValid = emailRegExp.test(email.value);
-messageError(email, errorMessages.email, isValid);
+displayErrorMessage(email, errorMessages.email, isValid);
 if (!isValid) isFormValid = false;
 
 
 //verification birthdate
 isValid = birthDate.value && new Date(birthDate.value) < new Date();
-messageError(birthDate, isValid ? "" : (!birthDate.value ? errorMessages.birthDateEmpty : errorMessages.birthDateFuture), isValid);
+displayErrorMessage(birthDate, isValid ? "" : (!birthDate.value ? errorMessages.birthDateEmpty : errorMessages.birthDateFuture), isValid);
 if (!isValid) isFormValid = false;
 
 
 
 //verification nombre de participations
 isValid = parseInt(quantity.value) >= 1 && parseFloat(quantity.value) === parseInt(quantity.value);
-messageError(quantity, isValid ? "" : (!quantity.value ? errorMessages.quantityNumber : errorMessages.quantityInteger), isValid);
+displayErrorMessage(quantity, isValid ? "" : (!quantity.value ? errorMessages.quantityNumber : errorMessages.quantityInteger), isValid);
 if (!isValid) isFormValid = false;
 
 
@@ -128,12 +128,12 @@ if (!isValid) isFormValid = false;
 
 
 const locationSelect = Array.from(listRadio).some(radio => radio.checked);
-messageError(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
+displayErrorMessage(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
 if (!locationSelect) isFormValid = false;
 
 //verification acceptation des conditions d'utilisation
 isValid = checkbox1.checked;
-messageError(checkbox1, errorMessages.acceptTerms, isValid);
+displayErrorMessage(checkbox1, errorMessages.acceptTerms, isValid);
 if (!isValid) isFormValid = false;
 
 //envoi formulaire si tout est valide //
