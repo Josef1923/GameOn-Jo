@@ -1,4 +1,4 @@
-// Ajout listener pour la navbar telmephione
+// Ajout listener pour la navbar telephone
 document.querySelector('.icon').addEventListener('click', editNav);
 
 function editNav() {
@@ -9,6 +9,7 @@ function editNav() {
     x.className = "topnav";
   }
 }
+
  // DOM Elements
 const modalBg = document.querySelector(".bground");
 const modalBtn = document.querySelectorAll(".modal-btn");
@@ -16,10 +17,8 @@ const formData = document.querySelectorAll(".formData");
 
 // DOM Rajoutés projet
 const close = document.querySelector(".close");
-
 const form = document.querySelector('form');
 const error = document.querySelectorAll(".error_message"); 
-
 const modalConfirmation = document.querySelector(".modal-confirmation"); 
 const modalBody = document.querySelector(".modal-body");
 const closeInscription = document.querySelector(".btn-close");

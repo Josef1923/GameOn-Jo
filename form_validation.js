@@ -1,5 +1,4 @@
 // DOM formulaire validation
-
 const foreName = document.getElementById("first");
 const lastName = document.getElementById("last");
 const email = document.getElementById("email"); 
@@ -9,7 +8,6 @@ const listRadio = document.querySelectorAll("input[type=radio]");
 const checkAccept1 = document.getElementById("checkbox1");
 
 //const messages d'erreur 
-
 const errorMessages = {
     firstName: "Veuillez entrer 2 caractères ou plus pour le champ du prénom.",
     lastName: "Veuillez entrer 2 caractères ou plus pour le champ du nom.",
@@ -77,8 +75,6 @@ if (!isValid) isFormValid = false;
 
 
 //Vérification du lieu de participation
-
-
 const locationSelect = Array.from(listRadio).some(radio => radio.checked);
 displayErrorMessage(listRadio[0], locationSelect ? "" : errorMessages.location, locationSelect);
 if (!locationSelect) isFormValid = false;
@@ -89,9 +85,8 @@ displayErrorMessage(checkbox1, errorMessages.acceptTerms, isValid);
 if (!isValid) isFormValid = false;
 
 //envoi formulaire si tout est valide //
-
 if (isFormValid) {
-modalBody.style.height = '800px';   //masquer et afficher modal de confirmation suivant alidation ok ou non//
+modalBody.style.height = '800px';   
 form.style.display = 'none';    
 modalConfirmation.style.display = 'block';   
 }  
