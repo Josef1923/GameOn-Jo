@@ -10,6 +10,9 @@ Objectifs de ce projet
 Les principaux objectifs de ce projet sont :
 
 Programmer en JavaScript
+
+--------------------------------------
+
 (EN)
 
 Description
